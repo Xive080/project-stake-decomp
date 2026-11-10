@@ -1,0 +1,23 @@
+name: Vampire Night overlay hntmod
+options:
+  basename: hntmod
+  target_path: disc/TBL/HNTMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/hntmod
+  src_path: src/hntmod
+  build_path: build
+  symbol_addrs_path: config/ov_hntmod_syms.txt
+  ld_script_path: build/hntmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: hntmod
+    type: code
+    start: 0x80
+    vram: 0x9C4880
+    subsegments:
+      - [0x80, asm, hntmod_text]
+      - [0x6A40, data, hntmod_data]
+  - [0x30000]

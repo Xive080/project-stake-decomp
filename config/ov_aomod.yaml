@@ -1,0 +1,23 @@
+name: Vampire Night overlay aomod
+options:
+  basename: aomod
+  target_path: disc/TBL/AOMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/aomod
+  src_path: src/aomod
+  build_path: build
+  symbol_addrs_path: config/ov_aomod_syms.txt
+  ld_script_path: build/aomod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: aomod
+    type: code
+    start: 0x80
+    vram: 0x9DF080
+    subsegments:
+      - [0x80, asm, aomod_text]
+      - [0x27140, data, aomod_data]
+  - [0x30000]

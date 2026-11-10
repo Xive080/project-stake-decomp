@@ -1,0 +1,23 @@
+name: Vampire Night overlay orgmod
+options:
+  basename: orgmod
+  target_path: disc/TBL/ORGMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/orgmod
+  src_path: src/orgmod
+  build_path: build
+  symbol_addrs_path: config/ov_orgmod_syms.txt
+  ld_script_path: build/orgmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: orgmod
+    type: code
+    start: 0x80
+    vram: 0xA0F880
+    subsegments:
+      - [0x80, asm, orgmod_text]
+      - [0x2AC0, data, orgmod_data]
+  - [0x3800]

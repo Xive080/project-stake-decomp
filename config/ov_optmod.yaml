@@ -1,0 +1,23 @@
+name: Vampire Night overlay optmod
+options:
+  basename: optmod
+  target_path: disc/TBL/OPTMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/optmod
+  src_path: src/optmod
+  build_path: build
+  symbol_addrs_path: config/ov_optmod_syms.txt
+  ld_script_path: build/optmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: optmod
+    type: code
+    start: 0x80
+    vram: 0x92B080
+    subsegments:
+      - [0x80, asm, optmod_text]
+      - [0x11FC0, data, optmod_data]
+  - [0x14800]

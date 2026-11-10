@@ -1,0 +1,23 @@
+name: Vampire Night overlay gamemod
+options:
+  basename: gamemod
+  target_path: disc/TBL/GAMEMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/gamemod
+  src_path: src/gamemod
+  build_path: build
+  symbol_addrs_path: config/ov_gamemod_syms.txt
+  ld_script_path: build/gamemod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: gamemod
+    type: code
+    start: 0x80
+    vram: 0x92B080
+    subsegments:
+      - [0x80, asm, gamemod_text]
+      - [0x57540, data, gamemod_data]
+  - [0x8E000]

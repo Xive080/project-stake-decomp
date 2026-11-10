@@ -1,0 +1,23 @@
+name: Vampire Night overlay bs5mod
+options:
+  basename: bs5mod
+  target_path: disc/TBL/BS5MOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/bs5mod
+  src_path: src/bs5mod
+  build_path: build
+  symbol_addrs_path: config/ov_bs5mod_syms.txt
+  ld_script_path: build/bs5mod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: bs5mod
+    type: code
+    start: 0x80
+    vram: 0x9C4880
+    subsegments:
+      - [0x80, asm, bs5mod_text]
+      - [0x9FC0, data, bs5mod_data]
+  - [0x17800]

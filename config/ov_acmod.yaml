@@ -1,0 +1,23 @@
+name: Vampire Night overlay acmod
+options:
+  basename: acmod
+  target_path: disc/TBL/ACMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/acmod
+  src_path: src/acmod
+  build_path: build
+  symbol_addrs_path: config/ov_acmod_syms.txt
+  ld_script_path: build/acmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: acmod
+    type: code
+    start: 0x80
+    vram: 0xA0F880
+    subsegments:
+      - [0x80, asm, acmod_text]
+      - [0xB540, data, acmod_data]
+  - [0xD000]

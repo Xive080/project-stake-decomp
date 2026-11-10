@@ -1,0 +1,23 @@
+name: Vampire Night overlay bs4mod
+options:
+  basename: bs4mod
+  target_path: disc/TBL/BS4MOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/bs4mod
+  src_path: src/bs4mod
+  build_path: build
+  symbol_addrs_path: config/ov_bs4mod_syms.txt
+  ld_script_path: build/bs4mod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: bs4mod
+    type: code
+    start: 0x80
+    vram: 0x9C4880
+    subsegments:
+      - [0x80, asm, bs4mod_text]
+      - [0xE2C0, data, bs4mod_data]
+  - [0x18000]

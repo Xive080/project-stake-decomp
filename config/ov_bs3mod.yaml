@@ -1,0 +1,23 @@
+name: Vampire Night overlay bs3mod
+options:
+  basename: bs3mod
+  target_path: disc/TBL/BS3MOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/bs3mod
+  src_path: src/bs3mod
+  build_path: build
+  symbol_addrs_path: config/ov_bs3mod_syms.txt
+  ld_script_path: build/bs3mod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: bs3mod
+    type: code
+    start: 0x80
+    vram: 0x9C4880
+    subsegments:
+      - [0x80, asm, bs3mod_text]
+      - [0xBFC0, data, bs3mod_data]
+  - [0xD800]

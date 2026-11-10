@@ -1,0 +1,17 @@
+.venv/
+*.elf
+asm/
+baserom/
+build/
+disc/
+ghidra/
+tools/bin/
+tools/compilers/
+tools/decomp-permuter/
+tools/m2c/
+assets/*.bin
+*.whl
+__pycache__/
+*.pyc
+tools/ghidra-ext/
+.DS_Store

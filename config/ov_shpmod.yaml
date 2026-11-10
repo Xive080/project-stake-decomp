@@ -1,0 +1,23 @@
+name: Vampire Night overlay shpmod
+options:
+  basename: shpmod
+  target_path: disc/TBL/SHPMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/shpmod
+  src_path: src/shpmod
+  build_path: build
+  symbol_addrs_path: config/ov_shpmod_syms.txt
+  ld_script_path: build/shpmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: shpmod
+    type: code
+    start: 0x80
+    vram: 0x9C4880
+    subsegments:
+      - [0x80, asm, shpmod_text]
+      - [0xBE40, data, shpmod_data]
+  - [0xF800]

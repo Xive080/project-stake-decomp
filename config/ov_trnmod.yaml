@@ -1,0 +1,23 @@
+name: Vampire Night overlay trnmod
+options:
+  basename: trnmod
+  target_path: disc/TBL/TRNMOD.BIN
+  base_path: ..
+  platform: ps2
+  compiler: MWCCPS2
+  asm_path: asm/trnmod
+  src_path: src/trnmod
+  build_path: build
+  symbol_addrs_path: config/ov_trnmod_syms.txt
+  ld_script_path: build/trnmod.ld
+  find_file_boundaries: False
+segments:
+  - [0x0, bin, header]  
+  - name: trnmod
+    type: code
+    start: 0x80
+    vram: 0x9DF080
+    subsegments:
+      - [0x80, asm, trnmod_text]
+      - [0x133C0, data, trnmod_data]
+  - [0x16800]
